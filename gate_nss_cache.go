@@ -113,9 +113,9 @@ func main() {
 		groupData += singleGroup
 	}
 
-	userErr := ioutil.WriteFile("passwd.cache", []byte(userData), 0644)
+	userErr := ioutil.WriteFile("/etc/passwd.cache", []byte(userData), 0644)
 	check(userErr)
 
-	groupErr := ioutil.WriteFile("group.cache", []byte(groupData), 0644)
+	groupErr := ioutil.WriteFile("/etc/group.cache", []byte(groupData), 0644)
 	check(groupErr)
 }
