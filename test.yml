@@ -1,0 +1,3 @@
+nss_http:
+  host_url: https://<<gate host>>/nss
+  api_key: <<api token>>
