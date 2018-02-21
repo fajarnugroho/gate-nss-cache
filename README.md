@@ -1,5 +1,5 @@
 # gate-nss-cache
-Gate NSS Cache is "screwed up implementation on google-nss-cache" implemented in GoLang, couple it with lib-nsscache, read below for more context and goto original [google-nss-cache](https://github.com/google/nsscache) for more understanding.
+Gate NSS Cache is a "minimalistic implementation on google-nss-cache" implemented in GoLang, couple it with lib-nsscache, read below for more context and goto original [google-nss-cache](https://github.com/google/nsscache) for more understanding.
 
 Change variables in test.yml
 Set GATE_CONFIG_FILE to location of test.yml by default it should be /etc/nss/nss_http.yml, so that gate-nss-cache can know from where it can read the location of rest based gate server. 
