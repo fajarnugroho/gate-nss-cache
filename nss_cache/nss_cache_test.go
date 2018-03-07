@@ -30,7 +30,7 @@ func TestShouldUpdatePasswdCache(t *testing.T) {
 		},
 	}
 
-	filePath := "/tmp/test.cache"
+	filePath := "/tmp/passwd.cache"
 	defer os.Remove(filePath)
 
 	err := UpdatePasswdCacheFile(filePath, users)
@@ -43,12 +43,51 @@ func TestShouldUpdatePasswdCache(t *testing.T) {
 	assert.Equal(t, expectedFileContent, string(file))
 }
 
-func TestShouldReturnError(t *testing.T) {
+func TestShouldReturnErrorOnEmptyUsers(t *testing.T) {
 	users := []User{}
 
-	filePath := "/tmp/test.cache"
+	filePath := "/tmp/passwd.cache"
 	defer os.Remove(filePath)
 
 	err := UpdatePasswdCacheFile(filePath, users)
 	assert.Equal(t, "Empty Users", err.Error())
+}
+
+func TestShouldUpdateGroupCache(t *testing.T) {
+	groups := []Group{
+		Group{
+			Name:     "foo_name",
+			Password: "foo_passwd",
+			Gid:      2,
+			Members:  []string{"gr_mem1", "gr_mem2", "gr_mem3"},
+		},
+		Group{
+			Name:     "bar_name",
+			Password: "bar_passwd",
+			Gid:      3,
+			Members:  []string{"gr_mem1", "gr_mem2", "gr_mem3"},
+		},
+	}
+
+	filePath := "/tmp/group.cache"
+	defer os.Remove(filePath)
+
+	err := UpdateGroupCacheFile(filePath, groups)
+	assert.NoError(t, err)
+
+	expectedFileContent := "foo_name:foo_passwd:2:gr_mem1,gr_mem2,gr_mem3\nbar_name:bar_passwd:3:gr_mem1,gr_mem2,gr_mem3\n"
+
+	file, err := ioutil.ReadFile(filePath)
+	assert.NoError(t, err)
+	assert.Equal(t, expectedFileContent, string(file))
+}
+
+func TestShouldReturnError(t *testing.T) {
+	groups := []Group{}
+
+	filePath := "/tmp/group.cache"
+	defer os.Remove(filePath)
+
+	err := UpdateGroupCacheFile(filePath, groups)
+	assert.Equal(t, "Empty Groups", err.Error())
 }
