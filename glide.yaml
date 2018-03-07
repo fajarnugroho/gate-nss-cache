@@ -1,0 +1,5 @@
+package: github.com/gate-nss-cache
+import:
+- package: github.com/stretchr/testify
+- package: github.com/spf13/viper
+- package: github.com/jarcoal/httpmock
