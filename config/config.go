@@ -47,6 +47,10 @@ func UserURL() string {
 	return fmt.Sprintf("%s/passwd?token=%s", HostURL(), ApiKey())
 }
 
+func GroupURL() string {
+	return fmt.Sprintf("%s/group?token=%s", HostURL(), ApiKey())
+}
+
 func mustGetString(key string) string {
 	if !viper.IsSet(key) {
 		panic(fmt.Sprintf("key %s is not set", key))
