@@ -1,4 +1,4 @@
-package: github.com/gate-nss-cache
+package: github.com/gate-sso/gate-nss-cache
 import:
 - package: github.com/stretchr/testify
 - package: github.com/spf13/viper
