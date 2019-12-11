@@ -3,9 +3,9 @@ package main
 import (
 	"encoding/json"
 
-	"github.com/gate-nss-cache/config"
-	"github.com/gate-nss-cache/gate"
-	"github.com/gate-nss-cache/nss_cache"
+	"./config"
+	"./gate"
+	"./nss_cache"
 )
 
 const PasswdCacheFilePath = "/etc/passwd.cache"
